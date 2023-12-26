@@ -1,0 +1,41 @@
+@using Microsoft.AspNetCore.Identity
+@using Finance.Models.Models
+@model Wallet
+@inject UserManager<ApplicationUser> UserManager
+@inject SignInManager<ApplicationUser> SignInManager
+
+@if(SignInManager.IsSignedIn(User)){
+    <form method="post" asp-action="Create">
+        <div class="border p-4 mt-4 roboto-regular">
+            <div class="row pb-3">
+                <h2>Create New Wallet</h2>
+                
+            </div>
+
+            <div class="mb-3 row">
+                <label for="ID_Card" class="col-sm-2 col-form-label fs-5">ID Card</label>
+                <div class="col-sm-10">
+                    <input asp-for="ID_Card" class="form-control" />
+                    <span asp-validation-for="ID_Card" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label for="Balance" class="col-sm-2 col-form-label fs-5">Balance</label>
+                <div class="col-sm-10">
+                    <input asp-for="Balance" class="form-control" />
+                    <span asp-validation-for="Balance" class="text-danger"></span>
+                </div>
+            </div>
+            <input type="hidden" asp-for="UserId"  value="@UserManager.GetUserId(User)"/>
+            <div class="row">
+                <div class="col-6 col-md-3">
+                    <button type="submit" class="btn btn-primary form-control">Create</button>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a asp-action="Index" class="btn btn-secondary form-control border">Back To List</a>
+                </div>
+            </div>           
+        </div>
+    </form>
+}

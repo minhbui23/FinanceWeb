@@ -1,0 +1,377 @@
+{
+  "Files": [
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\FinanceWeb.bundle.scp.css",
+      "PackagePath": "staticwebassets\\FinanceWeb.bundle.scp.css"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\css\\apexcharts.css",
+      "PackagePath": "staticwebassets\\css\\apexcharts.css"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\css\\bootstrap-icons.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap-icons.css"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\css\\tooplate-mini-finance.css",
+      "PackagePath": "staticwebassets\\css\\tooplate-mini-finance.css"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\fonts\\RobotoMono-Regular.ttf",
+      "PackagePath": "staticwebassets\\fonts\\RobotoMono-Regular.ttf"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\fonts\\bootstrap-icons.woff",
+      "PackagePath": "staticwebassets\\fonts\\bootstrap-icons.woff"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\fonts\\bootstrap-icons.woff2",
+      "PackagePath": "staticwebassets\\fonts\\bootstrap-icons.woff2"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\images\\acc-icon.jpg",
+      "PackagePath": "staticwebassets\\images\\acc-icon.jpg"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\images\\credit-card.png",
+      "PackagePath": "staticwebassets\\images\\credit-card.png"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\images\\flag\\australia.png",
+      "PackagePath": "staticwebassets\\images\\flag\\australia.png"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\images\\flag\\european-union.png",
+      "PackagePath": "staticwebassets\\images\\flag\\european-union.png"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\images\\flag\\singapore.png",
+      "PackagePath": "staticwebassets\\images\\flag\\singapore.png"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\images\\flag\\united-kingdom.png",
+      "PackagePath": "staticwebassets\\images\\flag\\united-kingdom.png"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\images\\flag\\united-states.png",
+      "PackagePath": "staticwebassets\\images\\flag\\united-states.png"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\images\\medium-shot-happy-man-smiling.jpg",
+      "PackagePath": "staticwebassets\\images\\medium-shot-happy-man-smiling.jpg"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\images\\profile\\senior-man-white-sweater-eyeglasses.jpg",
+      "PackagePath": "staticwebassets\\images\\profile\\senior-man-white-sweater-eyeglasses.jpg"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\images\\profile\\young-beautiful-woman-pink-warm-sweater.jpg",
+      "PackagePath": "staticwebassets\\images\\profile\\young-beautiful-woman-pink-warm-sweater.jpg"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\images\\profile\\young-woman-with-round-glasses-yellow-sweater.jpg",
+      "PackagePath": "staticwebassets\\images\\profile\\young-woman-with-round-glasses-yellow-sweater.jpg"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\images\\social\\search.png",
+      "PackagePath": "staticwebassets\\images\\social\\search.png"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\images\\social\\snapchat.png",
+      "PackagePath": "staticwebassets\\images\\social\\snapchat.png"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\images\\social\\spotify.png",
+      "PackagePath": "staticwebassets\\images\\social\\spotify.png"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\images\\social\\telegram.png",
+      "PackagePath": "staticwebassets\\images\\social\\telegram.png"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\images\\social\\tiktok.png",
+      "PackagePath": "staticwebassets\\images\\social\\tiktok.png"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\images\\social\\youtube.png",
+      "PackagePath": "staticwebassets\\images\\social\\youtube.png"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\js\\apexcharts.min.js",
+      "PackagePath": "staticwebassets\\js\\apexcharts.min.js"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\js\\custom.js",
+      "PackagePath": "staticwebassets\\js\\custom.js"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\js\\jquery.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery.min.js"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "E:\\Finance_Web\\SnapShot\\Finance-web-bigupdate\\FinanceWeb\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.FinanceWeb.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.FinanceWeb.props",
+      "PackagePath": "build\\FinanceWeb.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.FinanceWeb.props",
+      "PackagePath": "buildMultiTargeting\\FinanceWeb.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.FinanceWeb.props",
+      "PackagePath": "buildTransitive\\FinanceWeb.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

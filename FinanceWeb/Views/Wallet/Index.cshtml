@@ -1,0 +1,76 @@
+@model ICollection<Finance.Models.Models.Wallet>
+
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    var user = await UserManager.GetUserAsync(User);
+    if (user != null)
+    {
+        <div class="roboto-regular">
+            <div class="title-group mb-3">
+                <h1 class="h2 mb-0">@user.Name</h1>
+            </div>
+            <div>
+                <h2>Your Wallets</h2>
+                <a asp-action="Create" class="btn btn-primary">Create New Wallet</a>
+                <ul>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var wallet in Model)
+                        {
+                            <div class="row">
+                                <div class="col-md-3 pt-3">
+                                    <img src="images/credit-card.png" class="img-fluid" alt="">
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="pt-3 ">
+                                        <i class="bi bi-credit-card-2-front">@wallet.ID_Card</i>
+                                    </div>
+                                    <div class="pt-3">
+                                        <i class="bi bi-currency-dollar">@wallet.Balance</i>
+                                    </div>
+                                </div>
+
+
+                                <!-- Edit and Delete Button -->
+                                <div class="col-md-3">
+                                    <div class="pt-3">
+                                        <a  asp-action="Edit" asp-route-id="@wallet.Id" class="btn btn-primary">Edit</a>
+                                    </div>
+                                    <div class="pt-3">
+                                        <a asp-action="Delete" asp-route-id="@wallet.Id" class="btn btn-danger">Delete</a>
+                                    </div>
+                                </div>                               
+                                <div class="col-md-3">
+                                    <!-- Switch Wallet Button -->
+                                    @if(user.ActiveWalletId != wallet.Id){
+                                        <form asp-action="SwitchWallet" method="post">
+                                            <input type="hidden" name="walletId" value="@wallet.Id" />
+                                            <button type="submit" class="btn btn-primary">Switch To Wallet</button>
+                                        </form>
+                                    }
+                                </div>                                                           
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <p>No wallets found. <a href="javascript:void(0);" onclick="redirectToCreate()">Create a wallet</a></p>
+                        <script>
+                            function redirectToCreate() {
+                                var createUrl = '@Url.Action("Create", "Wallet")';
+                                window.location.href = createUrl;
+                            }
+                        </script>
+                    }
+                </ul>
+            </div>
+        </div>
+    }
+}
+else{
+    <h2 class="roboto-regular">You need to log in to use this service </h2>
+}

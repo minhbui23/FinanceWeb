@@ -1,0 +1,40 @@
+@using Microsoft.AspNetCore.Identity
+@using Finance.Models.Models
+@model Wallet
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "Edit Wallet";
+}
+<div class="roboto-regular">
+
+    <form method="post" asp-action="Edit">
+        <div class="border p-4 mt-4 roboto-regular">
+            <div class="row pb-3">
+                <h2>Edit Wallet</h2>
+            </div>
+    
+            <div class="form-group mb-3 row">
+                <label asp-for="ID_Card"></label>
+                <input asp-for="ID_Card" class="form-control" />
+                <span asp-validation-for="ID_Card" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3 row">
+                <label asp-for="Balance"></label>
+                <input asp-for="Balance" class="form-control" />
+                <span asp-validation-for="Balance" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="UserId"  value="@UserManager.GetUserId(User)"/>
+            <div class="row">
+                <div class="col-6 col-md-3">
+                    <button type="submit" class="btn btn-primary form-control ">Edit</button>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a asp-action="Index" class="btn btn-secondary form-control border">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
