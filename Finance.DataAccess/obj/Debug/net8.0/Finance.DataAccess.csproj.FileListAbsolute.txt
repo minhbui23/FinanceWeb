@@ -51,3 +51,4 @@ E:\Finance_Web\SnapShot\Finance-web-bigupdate\Finance.DataAccess\obj\Debug\net8.
 E:\Finance_Web\SnapShot\Finance-web-bigupdate\Finance.DataAccess\obj\Debug\net8.0\Finance.DataAccess.pdb
 E:\Finance_Web\SnapShot\Finance-web-bigupdate\Finance.DataAccess\obj\Debug\net8.0\Finance.DataAccess.genruntimeconfig.cache
 E:\Finance_Web\SnapShot\Finance-web-bigupdate\Finance.DataAccess\obj\Debug\net8.0\ref\Finance.DataAccess.dll
+E:\Finance_Web\SnapShot\Finance-web-bigupdate\Finance.DataAccess\obj\Debug\net8.0\Finance.DataAccess.sourcelink.json

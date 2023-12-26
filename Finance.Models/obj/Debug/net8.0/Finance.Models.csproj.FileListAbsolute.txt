@@ -42,3 +42,4 @@ E:\Finance_Web\SnapShot\Finance-web-bigupdate\Finance.Models\obj\Debug\net8.0\re
 E:\Finance_Web\SnapShot\Finance-web-bigupdate\Finance.Models\obj\Debug\net8.0\Finance.Models.pdb
 E:\Finance_Web\SnapShot\Finance-web-bigupdate\Finance.Models\obj\Debug\net8.0\Finance.Models.genruntimeconfig.cache
 E:\Finance_Web\SnapShot\Finance-web-bigupdate\Finance.Models\obj\Debug\net8.0\ref\Finance.Models.dll
+E:\Finance_Web\SnapShot\Finance-web-bigupdate\Finance.Models\obj\Debug\net8.0\Finance.Models.sourcelink.json

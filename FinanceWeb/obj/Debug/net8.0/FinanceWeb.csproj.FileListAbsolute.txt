@@ -864,3 +864,4 @@ E:\Finance_Web\SnapShot\Finance-web-bigupdate\FinanceWeb\obj\Debug\net8.0\refint
 E:\Finance_Web\SnapShot\Finance-web-bigupdate\FinanceWeb\obj\Debug\net8.0\FinanceWeb.pdb
 E:\Finance_Web\SnapShot\Finance-web-bigupdate\FinanceWeb\obj\Debug\net8.0\FinanceWeb.genruntimeconfig.cache
 E:\Finance_Web\SnapShot\Finance-web-bigupdate\FinanceWeb\obj\Debug\net8.0\ref\FinanceWeb.dll
+E:\Finance_Web\SnapShot\Finance-web-bigupdate\FinanceWeb\obj\Debug\net8.0\FinanceWeb.sourcelink.json
