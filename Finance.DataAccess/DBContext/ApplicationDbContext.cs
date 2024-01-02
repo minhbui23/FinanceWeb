@@ -17,7 +17,9 @@ namespace Finance.DataAccess.DBContext
         {
 
         }
-
+        public DbSet<SpendingCategory> SpendingCategories { get; set; }
+        public DbSet<IncomeCategory> IncomeCategories { get; set; }
+        public DbSet<Income> Incomes { get; set; }
         public DbSet<Spending> Spendings { get; set; }
         public DbSet<Wallet> Wallets { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers {get; set;}
@@ -39,6 +41,34 @@ namespace Finance.DataAccess.DBContext
                 .WithOne(spending => spending.Wallet)
                 .HasForeignKey(spending => spending.IdWallet)
                 .OnDelete(DeleteBehavior.Cascade); // Adjust the delete behavior based on your requirements
+
+
+            // Configure relationships between Wallet and Spending/Income
+            modelBuilder.Entity<Spending>()
+                .HasOne(spending => spending.Wallet)
+                .WithMany(wallet => wallet.Spendings)
+                .HasForeignKey(spending => spending.IdWallet)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Income>()
+                .HasOne(income => income.Wallet)
+                .WithMany(wallet => wallet.Incomes)
+                .HasForeignKey(income => income.IdWallet)
+                .OnDelete(DeleteBehavior.Cascade);
+
+             // Configure the one-to-many relationship between SpendingCategory and Spending
+            modelBuilder.Entity<Spending>()
+                .HasOne(spending => spending.Spending_Category)
+                .WithMany()
+                .HasForeignKey(spending => spending.SpendingCategoryId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Configure the one-to-many relationship between IncomeCategory and Income
+            modelBuilder.Entity<Income>()
+                .HasOne(income => income.Income_Category)
+                .WithMany()
+                .HasForeignKey(income => income.IncomeCategoryId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

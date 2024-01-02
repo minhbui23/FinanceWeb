@@ -18,12 +18,12 @@ using Microsoft.CodeAnalysis.CSharp;
 namespace Finance_Web.Controllers
 {
     [Authorize]
-    public class SpendingController : Controller
+    public class IncomeController : Controller
     {
         private readonly ApplicationDBContext _db;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signManager; 
-        public SpendingController(ApplicationDBContext db, UserManager<ApplicationUser> userManager,
+        public IncomeController(ApplicationDBContext db, UserManager<ApplicationUser> userManager,
                                   SignInManager<ApplicationUser> signInManager){
             _db=db;
             _userManager = userManager;
@@ -41,41 +41,36 @@ namespace Finance_Web.Controllers
                     
                     var userWithActiveWallet = _userManager.Users
                         .Include(u => u.Wallets)
-                        .ThenInclude(w => w.Spendings)
+                        .ThenInclude(w => w.Incomes)
                         .SingleOrDefault(u => u.Id == user.Id && u.ActiveWalletId != null);
                     
 
                     if (userWithActiveWallet != null && userWithActiveWallet.ActiveWallet != null)
                     {
-                        var spendingsForActiveWallet = userWithActiveWallet.ActiveWallet.Spendings.ToList();
+                        var incomesForActiveWallet = userWithActiveWallet.ActiveWallet.Incomes.ToList();
 
-                        return View(spendingsForActiveWallet);
+                        return View(incomesForActiveWallet);
                     }
                 }
             }
             return View();
         }
 
-        //when click Create in Index page
+        
         public IActionResult Create(){
-            var model = new SpendingCreateViewModel
-            {
-                SpendingCategories = _db.SpendingCategories.ToList(),
-                Spending = new Spending()
-            };
-            return View(model);
+            return View();
         }
 
-        //When Click Create in Create Page, a Spending object will be included in the Post method 
+         
         [HttpPost]
-        public async Task<IActionResult> Create(Spending spending)
+        public async Task<IActionResult> Create(Income income)
         {
             if (ModelState.IsValid)
             {
-                // Set the IdWallet property of the Spending object to the retrieved ActiveWalletID
-                if (spending == null)
+                // Set the IdWallet property of the income object to the retrieved ActiveWalletID
+                if (income == null)
                 {
-                    return BadRequest("Spending cannot be null");
+                    return BadRequest("Income cannot be null");
                 }
 
                 var user = await _userManager.GetUserAsync(User);
@@ -98,25 +93,25 @@ namespace Finance_Web.Controllers
                 {
                     try
                     {
-                        var spendingtoDb = new Spending
+                        var incometoDb = new Income
                         {
-                            Time = spending.Time,
-                            SpendingCategoryId = spending.SpendingCategoryId,
-                            Amount = spending.Amount,
+                            Time = income.Time,
+                            IncomeCategoryId = income.IncomeCategoryId,
+                            Amount = income.Amount,
                             IdWallet = userWithActiveWallet.ActiveWalletId.Value,
                         };
 
                         if (userWithActiveWallet.ActiveWallet != null)
                         {
-                            userWithActiveWallet.ActiveWallet.Balance -= spending.Amount;
+                            userWithActiveWallet.ActiveWallet.Balance += income.Amount;
                         }
 
-                        _db.Spendings.Add(spendingtoDb);
+                        _db.Incomes.Add(incometoDb);
                         await _db.SaveChangesAsync();
 
                         transaction.Commit();
 
-                        TempData["success"] = "Spending created successfully";
+                        TempData["success"] = "Income created successfully";
                         return RedirectToAction("Index");
                     }
                     catch
@@ -127,7 +122,7 @@ namespace Finance_Web.Controllers
                 }
             }
             // Handle invalid model state or other errors
-            return View(spending);
+            return View(income);
         }
 
 
@@ -137,22 +132,22 @@ namespace Finance_Web.Controllers
                 return NotFound();
             }
 
-            Spending? spendingFromDb = await _db.Spendings.FindAsync(id);
-            decimal preAmount = spendingFromDb?.Amount ?? 0; // Add null check and provide a default value
-            if (spendingFromDb == null)
+            Income? incomeFromDb = await _db.Incomes.FindAsync(id);
+            decimal preAmount = incomeFromDb?.Amount ?? 0; // Add null check and provide a default value
+            if (incomeFromDb == null)
             {
                 return NotFound();
             }
-            var viewModel = new SpendingEditViewModel
+            var viewModel = new IncomeEditViewModel
             {
-                SpendingFromDb = spendingFromDb,
+                IncomeFromDb = incomeFromDb,
                 PreAmount = preAmount
             };
             return View(viewModel);
         }
         
         [HttpPost]
-public async Task<IActionResult> Edit(SpendingEditViewModel obj)
+public async Task<IActionResult> Edit(IncomeEditViewModel obj)
 {
     if (ModelState.IsValid)
     {
@@ -168,29 +163,29 @@ public async Task<IActionResult> Edit(SpendingEditViewModel obj)
 
         if (userWithActiveWallet != null && userWithActiveWallet.ActiveWalletId.HasValue)
         {
-            var spendingFromDb = await _db.Spendings.FindAsync(obj.SpendingFromDb.Id);
-            if (spendingFromDb == null)
+            var incomeFromDb = await _db.Incomes.FindAsync(obj.IncomeFromDb.Id);
+            if (incomeFromDb == null)
             {
-                return NotFound("Spending not found");
+                return NotFound("Income not found");
             }
 
             // Calculate the difference between the old and new amount
-            var amountDifference = obj.SpendingFromDb.Amount - spendingFromDb.Amount;
+            var amountDifference = obj.IncomeFromDb.Amount - incomeFromDb.Amount;
 
             // Update the wallet balance
             if (userWithActiveWallet.ActiveWallet != null)
             {
-                userWithActiveWallet.ActiveWallet.Balance -= amountDifference;
+                userWithActiveWallet.ActiveWallet.Balance += amountDifference;
             }
 
-            // Update the spending
-            spendingFromDb.Amount = obj.SpendingFromDb.Amount;
-            spendingFromDb.SpendingCategoryId = obj.SpendingFromDb.SpendingCategoryId;
-            spendingFromDb.Time = obj.SpendingFromDb.Time;
+            // Update the income
+            incomeFromDb.Amount = obj.IncomeFromDb.Amount;
+            incomeFromDb.IncomeCategoryId = obj.IncomeFromDb.IncomeCategoryId;
+            incomeFromDb.Time = obj.IncomeFromDb.Time;
 
             await _db.SaveChangesAsync();
 
-            TempData["success"] = "Spending updated successfully";
+            TempData["success"] = "Income updated successfully";
             return RedirectToAction("Index");
         }
     }
@@ -202,15 +197,15 @@ public async Task<IActionResult> Edit(SpendingEditViewModel obj)
             if(id == null || id == -0) {
                 return NotFound();
             }
-            Spending? spendingFromDb = await _db.Spendings.FindAsync(id);
-            if(spendingFromDb == null) {
+            Income? incomeFromDb = await _db.Incomes.FindAsync(id);
+            if(incomeFromDb == null) {
                 return NotFound();
             }
-            return View(spendingFromDb);
+            return View(incomeFromDb);
         }
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeletePost(int? id){
-            Spending? obj = await _db.Spendings.FindAsync(id);
+            Income? obj = await _db.Incomes.FindAsync(id);
             if (obj == null)
             {
                 return NotFound();
@@ -233,7 +228,7 @@ public async Task<IActionResult> Edit(SpendingEditViewModel obj)
                     userWithActiveWallet.ActiveWallet.Balance += obj.Amount;
                 }
                 
-                _db.Spendings.Remove(obj);
+                _db.Incomes.Remove(obj);
                 await _db.SaveChangesAsync();
                 TempData["success"] = "Category deleted successfully";
                 return RedirectToAction("Index");

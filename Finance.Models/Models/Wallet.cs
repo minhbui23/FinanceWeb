@@ -27,5 +27,6 @@ namespace Finance.Models.Models
         public ApplicationUser? User { get; set; }
 
         public ICollection<Spending> Spendings { get; set; } = new List<Spending>();
+        public ICollection<Income> Incomes { get; set; } = new List<Income>();
     }
 }

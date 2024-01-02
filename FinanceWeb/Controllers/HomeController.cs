@@ -49,7 +49,7 @@ public class HomeController : Controller
             var spendingsByCategory = _db.Spendings
                 .Where(s => s.IdWallet == _userWithActiveWallet.ActiveWalletId)
                 .AsEnumerable()
-                .GroupBy(s => s.Description) // Group by description (which is the category)
+                .GroupBy(s => s.SpendingCategoryId) // Group by description (which is the category)
                 .Select(g => new { Category = g.Key, TotalSpend = g.Sum(s => s.Amount) })
                 .ToList();
 

@@ -1,4 +1,4 @@
-@model List<Spending>
+@model List<Income>
 @using Microsoft.AspNetCore.Identity
 
 @inject SignInManager<ApplicationUser> SignInManager
@@ -42,20 +42,20 @@
                                 var user = await UserManager.GetUserAsync(User);
                                 if (user != null)
                                 {
-                                    @foreach (var spending in Model)
+                                    @foreach (var income in Model)
                                     {
                                         <tr>
-                                            <td>@spending.Time.ToString("dd/MM/yyyy")</td>
-                                            <td>@spending.Time.ToString(@"hh\:mm tt")</td>
-                                            <td>@spending.Spending_Category?.Name</td>
-                                            <td>-$@spending.Amount</td>                                            
+                                            <td>@income.Time.ToString("dd/MM/yyyy")</td>
+                                            <td>@income.Time.ToString(@"hh\:mm tt")</td>
+                                            <td>@income.Income_Category?.Name</td>
+                                            <td>+$@income.Amount</td>                                            
                                             <td class="text-center">
                                                 <div class="btn-group" role="group">
-                                                    <a class="btn btn-custom-edit" asp-action="Edit" asp-route-Id="@spending.Id" class="btn mx-2" style="font-size: 20px;">
+                                                    <a class="btn btn-custom-edit" asp-action="Edit" asp-route-Id="@income.Id" class="btn mx-2" style="font-size: 20px;">
                                                         <i class="bi bi-pencil-square"></i>
                                                     </a>
 
-                                                    <a class="btn btn-custom-delete" asp-action="Delete" asp-route-Id="@spending.Id" class="btn mx-2" style="font-size: 20px;">
+                                                    <a class="btn btn-custom-delete" asp-action="Delete" asp-route-Id="@income.Id" class="btn mx-2" style="font-size: 20px;">
                                                         <i class="bi bi-trash"></i>                                                        
                                                     </a>
                                                 </div>
