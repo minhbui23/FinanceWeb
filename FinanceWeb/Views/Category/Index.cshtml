@@ -1,0 +1,41 @@
+@model Finance.Models.ViewModel.CategoryIndexViewModel
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>Spending Categories</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var spendingCategory in Model.SpendingCategories)
+                {
+                    <tr>
+                        <td>@spendingCategory.Name</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-6">
+        <h2>Income Categories</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var incomeCategory in Model.IncomeCategories)
+                {
+                    <tr>
+                        <td>@incomeCategory.Name</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -40,19 +40,11 @@ namespace Finance.DataAccess.DBContext
                 .HasMany(wallet => wallet.Spendings)
                 .WithOne(spending => spending.Wallet)
                 .HasForeignKey(spending => spending.IdWallet)
-                .OnDelete(DeleteBehavior.Cascade); // Adjust the delete behavior based on your requirements
+                .OnDelete(DeleteBehavior.Cascade); 
 
-
-            // Configure relationships between Wallet and Spending/Income
-            modelBuilder.Entity<Spending>()
-                .HasOne(spending => spending.Wallet)
-                .WithMany(wallet => wallet.Spendings)
-                .HasForeignKey(spending => spending.IdWallet)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<Income>()
-                .HasOne(income => income.Wallet)
-                .WithMany(wallet => wallet.Incomes)
+            modelBuilder.Entity<Wallet>()
+                .HasMany(wallet => wallet.Incomes)
+                .WithOne(income => income.Wallet)
                 .HasForeignKey(income => income.IdWallet)
                 .OnDelete(DeleteBehavior.Cascade);
 

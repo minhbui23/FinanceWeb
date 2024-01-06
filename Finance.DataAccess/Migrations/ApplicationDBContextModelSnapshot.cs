@@ -93,7 +93,7 @@ namespace Finance.DataAccess.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("Finance.Models.Models.Spending", b =>
+            modelBuilder.Entity("Finance.Models.Models.Income", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -102,10 +102,10 @@ namespace Finance.DataAccess.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Description")
+                    b.Property<int>("IdWallet")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("IdWallet")
+                    b.Property<int>("IncomeCategoryId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Time")
@@ -115,7 +115,68 @@ namespace Finance.DataAccess.Migrations
 
                     b.HasIndex("IdWallet");
 
+                    b.HasIndex("IncomeCategoryId");
+
+                    b.ToTable("Incomes");
+                });
+
+            modelBuilder.Entity("Finance.Models.Models.IncomeCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("IncomeCategories");
+                });
+
+            modelBuilder.Entity("Finance.Models.Models.Spending", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("IdWallet")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("SpendingCategoryId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Time")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdWallet");
+
+                    b.HasIndex("SpendingCategoryId");
+
                     b.ToTable("Spendings");
+                });
+
+            modelBuilder.Entity("Finance.Models.Models.SpendingCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SpendingCategories");
                 });
 
             modelBuilder.Entity("Finance.Models.Models.Wallet", b =>
@@ -284,6 +345,25 @@ namespace Finance.DataAccess.Migrations
                     b.Navigation("ActiveWallet");
                 });
 
+            modelBuilder.Entity("Finance.Models.Models.Income", b =>
+                {
+                    b.HasOne("Finance.Models.Models.Wallet", "Wallet")
+                        .WithMany("Incomes")
+                        .HasForeignKey("IdWallet")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Finance.Models.Models.IncomeCategory", "Income_Category")
+                        .WithMany()
+                        .HasForeignKey("IncomeCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Income_Category");
+
+                    b.Navigation("Wallet");
+                });
+
             modelBuilder.Entity("Finance.Models.Models.Spending", b =>
                 {
                     b.HasOne("Finance.Models.Models.Wallet", "Wallet")
@@ -291,6 +371,14 @@ namespace Finance.DataAccess.Migrations
                         .HasForeignKey("IdWallet")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Finance.Models.Models.SpendingCategory", "Spending_Category")
+                        .WithMany()
+                        .HasForeignKey("SpendingCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Spending_Category");
 
                     b.Navigation("Wallet");
                 });
@@ -364,6 +452,8 @@ namespace Finance.DataAccess.Migrations
 
             modelBuilder.Entity("Finance.Models.Models.Wallet", b =>
                 {
+                    b.Navigation("Incomes");
+
                     b.Navigation("Spendings");
                 });
 #pragma warning restore 612, 618

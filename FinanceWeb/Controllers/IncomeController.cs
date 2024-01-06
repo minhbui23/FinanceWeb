@@ -41,9 +41,10 @@ namespace Finance_Web.Controllers
                     
                     var userWithActiveWallet = _userManager.Users
                         .Include(u => u.Wallets)
-                        .ThenInclude(w => w.Incomes)
+                            .ThenInclude(w => w.Incomes)
+                                .ThenInclude(s => s.Income_Category)
                         .SingleOrDefault(u => u.Id == user.Id && u.ActiveWalletId != null);
-                    
+
 
                     if (userWithActiveWallet != null && userWithActiveWallet.ActiveWallet != null)
                     {
@@ -58,19 +59,21 @@ namespace Finance_Web.Controllers
 
         
         public IActionResult Create(){
-            return View();
+            var model = new IncomeCreateViewModel
+            {
+                IncomeCategories = _db.IncomeCategories.ToList(),
+                Income = new Income()
+            };
+            return View(model);
         }
 
          
         [HttpPost]
-        public async Task<IActionResult> Create(Income income)
+        public async Task<IActionResult> Create(IncomeCreateViewModel model)
         {
-            if (ModelState.IsValid)
-            {
-                // Set the IdWallet property of the income object to the retrieved ActiveWalletID
-                if (income == null)
+            if (model.Income == null)
                 {
-                    return BadRequest("Income cannot be null");
+                    return BadRequest("Spending cannot be null");
                 }
 
                 var user = await _userManager.GetUserAsync(User);
@@ -95,15 +98,16 @@ namespace Finance_Web.Controllers
                     {
                         var incometoDb = new Income
                         {
-                            Time = income.Time,
-                            IncomeCategoryId = income.IncomeCategoryId,
-                            Amount = income.Amount,
+                            Time = model.Income.Time,
+                            IncomeCategoryId = model.Income.IncomeCategoryId,
+                            Income_Category = model.Income.Income_Category,
+                            Amount = model.Income.Amount,
                             IdWallet = userWithActiveWallet.ActiveWalletId.Value,
                         };
 
                         if (userWithActiveWallet.ActiveWallet != null)
                         {
-                            userWithActiveWallet.ActiveWallet.Balance += income.Amount;
+                            userWithActiveWallet.ActiveWallet.Balance += model.Income.Amount;
                         }
 
                         _db.Incomes.Add(incometoDb);
@@ -120,9 +124,9 @@ namespace Finance_Web.Controllers
                         // Handle any errors that occurred during the transaction
                     }
                 }
-            }
+            
             // Handle invalid model state or other errors
-            return View(income);
+            return View(model);
         }
 
 
@@ -147,51 +151,51 @@ namespace Finance_Web.Controllers
         }
         
         [HttpPost]
-public async Task<IActionResult> Edit(IncomeEditViewModel obj)
-{
-    if (ModelState.IsValid)
-    {
-        var user = await _userManager.GetUserAsync(User);
-        if (user == null)
+        public async Task<IActionResult> Edit(IncomeEditViewModel obj)
         {
-            return NotFound("User not found");
-        }
-
-        var userWithActiveWallet = await _userManager.Users
-            .Include(u => u.Wallets)
-            .SingleOrDefaultAsync(u => u.Id == user.Id);
-
-        if (userWithActiveWallet != null && userWithActiveWallet.ActiveWalletId.HasValue)
-        {
-            var incomeFromDb = await _db.Incomes.FindAsync(obj.IncomeFromDb.Id);
-            if (incomeFromDb == null)
+            if (ModelState.IsValid)
             {
-                return NotFound("Income not found");
+                var user = await _userManager.GetUserAsync(User);
+                if (user == null)
+                {
+                    return NotFound("User not found");
+                }
+
+                var userWithActiveWallet = await _userManager.Users
+                    .Include(u => u.Wallets)
+                    .SingleOrDefaultAsync(u => u.Id == user.Id);
+
+                if (userWithActiveWallet != null && userWithActiveWallet.ActiveWalletId.HasValue)
+                {
+                    var incomeFromDb = await _db.Incomes.FindAsync(obj.IncomeFromDb.Id);
+                    if (incomeFromDb == null)
+                    {
+                        return NotFound("Income not found");
+                    }
+
+                    // Calculate the difference between the old and new amount
+                    var amountDifference = obj.IncomeFromDb.Amount - incomeFromDb.Amount;
+
+                    // Update the wallet balance
+                    if (userWithActiveWallet.ActiveWallet != null)
+                    {
+                        userWithActiveWallet.ActiveWallet.Balance += amountDifference;
+                    }
+
+                    // Update the income
+                    incomeFromDb.Amount = obj.IncomeFromDb.Amount;
+                    incomeFromDb.IncomeCategoryId = obj.IncomeFromDb.IncomeCategoryId;
+                    incomeFromDb.Time = obj.IncomeFromDb.Time;
+
+                    await _db.SaveChangesAsync();
+
+                    TempData["success"] = "Income updated successfully";
+                    return RedirectToAction("Index");
+                }
             }
 
-            // Calculate the difference between the old and new amount
-            var amountDifference = obj.IncomeFromDb.Amount - incomeFromDb.Amount;
-
-            // Update the wallet balance
-            if (userWithActiveWallet.ActiveWallet != null)
-            {
-                userWithActiveWallet.ActiveWallet.Balance += amountDifference;
-            }
-
-            // Update the income
-            incomeFromDb.Amount = obj.IncomeFromDb.Amount;
-            incomeFromDb.IncomeCategoryId = obj.IncomeFromDb.IncomeCategoryId;
-            incomeFromDb.Time = obj.IncomeFromDb.Time;
-
-            await _db.SaveChangesAsync();
-
-            TempData["success"] = "Income updated successfully";
-            return RedirectToAction("Index");
-        }
-    }
-
-    return View(obj);
-} 
+            return View(obj);
+        } 
 
         public async Task<IActionResult> Delete(int? id){
             if(id == null || id == -0) {

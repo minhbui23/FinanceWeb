@@ -17,4 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Finance.Models\Finance.Models.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data_Base\" />
+  </ItemGroup>
 </Project>

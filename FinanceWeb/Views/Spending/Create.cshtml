@@ -16,6 +16,16 @@
     };
 </script>
 
+<script>
+    function handleCategorySelection() {
+        var selectedValue = document.getElementById("SpendingCategoryId").value;
+        if (selectedValue === "CreateNewCategory") {
+            // Redirect to the Create action of the SpendingCategory controller
+            window.location.href = "/SpendingCategory/Create";
+        }
+    }
+</script>
+
 <form method="post" asp-action="Create">
     <div class="border p-4 mt-4 roboto-regular">
         <div class="row pb-3">
@@ -42,7 +52,7 @@
                         {
                             <option value="@category.Id">@category.Name</option>
                         }
-                        <option value="new">Create New Category</option>
+                         <option value="CreateNewCategory">Create New Category</option>
                     </select>
                     <span asp-validation-for="@Model.Spending.SpendingCategoryId" class="text-danger"></span>
                 </div>
@@ -66,3 +76,5 @@
         </div>
     </div>
 </form>
+
+

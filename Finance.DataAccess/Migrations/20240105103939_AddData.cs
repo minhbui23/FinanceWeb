@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Finance.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class addData : Migration
+    public partial class AddData : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -23,6 +23,32 @@ namespace Finance.DataAccess.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetRoles", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "IncomeCategories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_IncomeCategories", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SpendingCategories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SpendingCategories", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -163,19 +189,53 @@ namespace Finance.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Incomes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Time = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    IncomeCategoryId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Amount = table.Column<decimal>(type: "TEXT", nullable: false),
+                    IdWallet = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Incomes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Incomes_IncomeCategories_IncomeCategoryId",
+                        column: x => x.IncomeCategoryId,
+                        principalTable: "IncomeCategories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Incomes_Wallets_IdWallet",
+                        column: x => x.IdWallet,
+                        principalTable: "Wallets",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Spendings",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Time = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Description = table.Column<int>(type: "INTEGER", nullable: false),
+                    SpendingCategoryId = table.Column<int>(type: "INTEGER", nullable: false),
                     Amount = table.Column<decimal>(type: "TEXT", nullable: false),
                     IdWallet = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Spendings", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Spendings_SpendingCategories_SpendingCategoryId",
+                        column: x => x.SpendingCategoryId,
+                        principalTable: "SpendingCategories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Spendings_Wallets_IdWallet",
                         column: x => x.IdWallet,
@@ -227,9 +287,24 @@ namespace Finance.DataAccess.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Incomes_IdWallet",
+                table: "Incomes",
+                column: "IdWallet");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Incomes_IncomeCategoryId",
+                table: "Incomes",
+                column: "IncomeCategoryId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Spendings_IdWallet",
                 table: "Spendings",
                 column: "IdWallet");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Spendings_SpendingCategoryId",
+                table: "Spendings",
+                column: "SpendingCategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Wallets_UserId",
@@ -291,10 +366,19 @@ namespace Finance.DataAccess.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Incomes");
+
+            migrationBuilder.DropTable(
                 name: "Spendings");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "IncomeCategories");
+
+            migrationBuilder.DropTable(
+                name: "SpendingCategories");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

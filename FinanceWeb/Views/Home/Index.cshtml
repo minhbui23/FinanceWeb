@@ -5,46 +5,81 @@
     <div class="container mt-5">
         <div class="text-center">
             <h1 class="display-4">Welcome</h1>
-            <p class="lead">Track your spending with our easy-to-use application.</p>
         </div>
-        <div class="card shadow border-0 mt-4 " >
-
-            <div class="card-body" style="height: 700px; display: flex; justify-content: center; align-items: center;">
-                <canvas id="myPieChart"></canvas>
-            </div>
-        </div>
-
 
         <div class="card shadow border-0 mt-4 ">
             <div class="card-header  ml-0 py-4" style="background-color: rgb(27, 66, 66);">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h2 class="py-2 text-white">Spending History</h2>
+                        <h2 class="py-2 text-white">History</h2>
                     </div>
                 </div>
             </div>
             <div class="card-body p-4">
-                <canvas id="myChart" style="height: 500px;"></canvas> <!-- Added inline CSS to increase height -->
+                <canvas id="SpendingLineChart" style="height: 500px;"></canvas> <!-- Added inline CSS to increase height -->
             </div>
         </div>
+        <div class="card shadow border-0 mt-4 ">
+            <div class="card-header  ml-0 py-4" style="background-color: rgb(27, 66, 66);">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h2 class="py-2 text-white">History</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body p-4">
+                <canvas id="IncomeLineChart" style="height: 500px;"></canvas> <!-- Added inline CSS to increase height -->
+            </div>
+        </div>
+        <div class="card shadow border-0 mt-4 " >
+            <div class="card-header  ml-0 py-4" style="background-color: rgb(27, 66, 66);">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h2 class="py-2 text-white">Spending</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body" style="height: 700px; display: flex; justify-content: center; align-items: center;">
+                <canvas id="SpendingPieChart"></canvas>
+            </div>
+        </div>
+
+        <div class="card shadow border-0 mt-4 " >
+            <div class="card-header  ml-0 py-4" style="background-color: rgb(27, 66, 66);">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h2 class="py-2 text-white">Income</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body" style="height: 700px; display: flex; justify-content: center; align-items: center;">
+                <canvas id="IncomePieChart"></canvas>
+            </div>
+        </div>
+
+
+
+
             
     <!-- Include the Chart.js library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- Create a canvas element to render the chart -->
+    <!-- Create Spending line chart -->
     <script>
-        var ctx = document.getElementById('myChart').getContext('2d');
+        var ctx = document.getElementById('SpendingLineChart').getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: @Html.Raw(ViewBag.Labels),
-                datasets: [{
-                    label: 'Spend by Day',
-                    data: @Html.Raw(ViewBag.Data),
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                }]
+                labels: @Html.Raw(ViewBag.SpendLabels),
+                datasets: [
+                    {
+                        label: 'Spend by Day',
+                        data: @Html.Raw(ViewBag.SpendData),
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 2
+                    }
+                ]
             },
             options: {
                 scales: {
@@ -54,25 +89,58 @@
                 }
             }
         });
-    </script>    
+    </script> 
 
-    <!-- Create Pie Chart -->     
     <script>
-        var ctx = document.getElementById('myPieChart').getContext('2d');
+        var ctx = document.getElementById('IncomeLineChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: @Html.Raw(ViewBag.IncomeLabels),
+                datasets: [
+                    {
+                        label: 'Income by Day',
+                        data: @Html.Raw(ViewBag.IncomeData),
+                        backgroundColor: 'rgba(255, 0, 0, 0.2)',
+                        borderColor: 'rgba(255, 0, 0, 1)',
+                        borderWidth: 2
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script> 
+    <!-- Create Spending pie chart -->     
+    <script>
+        var ctx = document.getElementById('SpendingPieChart').getContext('2d');
         var myPieChart = new Chart(ctx, {
             type: 'pie',
             data: {
-                labels: @Html.Raw(ViewBag.Categories),
+                labels: @Html.Raw(ViewBag.SpendCategories),
                 datasets: [{
                     label: 'Spend by Category',
-                    data: @Html.Raw(ViewBag.Spends),
+                    data: @Html.Raw(ViewBag.SpendData),
                     backgroundColor: [
                         'rgba(255, 0, 0, 0.3)',   // Red
                         'rgba(0, 255, 0, 0.3)',   // Green
                         'rgba(0, 0, 255, 0.3)',   // Blue
                         'rgba(255, 255, 0, 0.3)', // Yellow
                         'rgba(0, 255, 255, 0.3)', // Cyan
+                        'rgba(212, 172, 13, 0.3)', // Gold
+                        'rgba(93, 173, 226 , 0.3)', // Light Blue
+                        'rgba(229, 152, 102, 0.3)', // Orange
+                        'rgba(115, 198, 182, 0.3)', // Teal
+                        'rgba(187, 143, 206 , 0.3)', // Purple
+                        'rgba(88, 214, 141 , 0.3)', // Green
+                        'rgba(186, 74, 0, 0.3)', // Brown
                         'rgba(255, 0, 255, 0.3)'  // Magenta
+
                     ],
                     borderColor: [
                         'rgba(255, 0, 0, 1)',   // Red
@@ -80,6 +148,13 @@
                         'rgba(0, 0, 255, 1)',   // Blue
                         'rgba(255, 255, 0, 1)', // Yellow
                         'rgba(0, 255, 255, 1)', // Cyan
+                        'rgba(212, 172, 13, 1)', // Gold
+                        'rgba(93, 173, 226 , 1)', // Light Blue
+                        'rgba(229, 152, 102, 1)', // Orange
+                        'rgba(115, 198, 182, 1)', // Teal
+                        'rgba(187, 143, 206 , 1)', // Purple
+                        'rgba(88, 214, 141 , 1)', // Green
+                        'rgba(186, 74, 0, 1)', // Brown
                         'rgba(255, 0, 255, 1)'  // Magenta
                     ],
                     borderWidth: 1
@@ -87,16 +162,52 @@
             },
             options: {
                     responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'top',
-                        },
-                        title: {
-                            display: true,
-                            text: 'Spending by Category'
-                        }
-                    }
                 }
         }); 
-    </script>                     
+    </script>   
+
+
+
+    <!-- Create Income pie chart -->  
+    <script>
+        var ctx = document.getElementById('IncomePieChart').getContext('2d');
+        var myPieChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: @Html.Raw(ViewBag.IncomeCategories),
+                datasets: [{
+                    label: 'Spend by Category',
+                    data: @Html.Raw(ViewBag.IncomeData),
+                    backgroundColor: [
+                        'rgba(255, 0, 0, 0.3)',   // Red
+                        'rgba(0, 255, 0, 0.3)',   // Green
+                        'rgba(0, 0, 255, 0.3)',   // Blue
+                        'rgba(255, 255, 0, 0.3)', // Yellow
+                        'rgba(0, 255, 255, 0.3)', // Cyan
+                        'rgba(212, 172, 13, 0.3)', // Gold
+                        'rgba(93, 173, 226 , 0.3)', // Light Blue
+                        'rgba(229, 152, 102, 0.3)', // Orange
+                        'rgba(255, 0, 255, 0.3)'  // Magenta
+
+                    ],
+                    borderColor: [
+                        'rgba(255, 0, 0, 1)',   // Red
+                        'rgba(0, 255, 0, 1)',   // Green
+                        'rgba(0, 0, 255, 1)',   // Blue
+                        'rgba(255, 255, 0, 1)', // Yellow
+                        'rgba(0, 255, 255, 1)', // Cyan
+                        'rgba(212, 172, 13,  1)', // Gold
+                        'rgba(93, 173, 226 , 1)', // Light Blue
+                        'rgba(229, 152, 102, 1)', // Orange
+                        'rgba(255, 0, 255, 1)'  // Magenta
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                    responsive: true,
+                }
+        }); 
+    </script>   
+
 </div>

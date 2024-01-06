@@ -20,12 +20,17 @@
 
         <div class="mb-3 row">
             <label for="Description" class="col-sm-2 col-form-label fs-5">Description</label>
-            <div class="col-sm-10">
-                <select asp-for="@Model.SpendingFromDb.Description" asp-items="Html.GetEnumSelectList<Finance.Models.Models.SpendingCategory>()" class="form-control" id="Description">
-                    <option value="">Select a category</option>
-                </select>
-                <span asp-validation-for="@Model.SpendingFromDb.Description" class="text-danger"></span>
-            </div>
+                <div class="col-sm-10">
+                    <select asp-for="@Model.SpendingFromDb.SpendingCategoryId" class="form-control" id="SpendingCategoryId">
+                        <option value="">Select a category</option>
+                        @foreach (var category in Model.SpendingCategories)
+                        {
+                            <option value="@category.Id">@category.Name</option>
+                        }
+                         <option value="CreateNewCategory">Create New Category</option>
+                    </select>
+                    <span asp-validation-for="@Model.SpendingFromDb.SpendingCategoryId" class="text-danger"></span>
+                </div>
         </div>
 
         <div class="mb-3 row">
