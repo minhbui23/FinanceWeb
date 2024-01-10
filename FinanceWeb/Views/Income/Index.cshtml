@@ -66,6 +66,10 @@
                             }
 						</tbody>
                     </table>
+                <div class="text-center mt-3">
+                    <button id="sort-by-date" class="btn btn-primary mr-2">Sort by Date</button>
+                    <button id="sort-by-amount" class="btn btn-primary">Sort by Amount</button>
+                </div>
                 </div>
 
                 <nav aria-label="Page navigation example">
@@ -104,3 +108,52 @@
         </div>																			
 </div>
 
+<!-- Add this script at the end of your HTML body or in a separate JavaScript file -->
+<script>
+    // Function to sort table rows by Date
+    function sortByDate() {
+        var table = document.querySelector('.account-table');
+        var tbody = table.querySelector('tbody');
+        var rows = Array.from(tbody.querySelectorAll('tr'));
+
+        rows.sort(function(a, b) {
+            var dateA = new Date(a.cells[0].textContent);
+            var dateB = new Date(b.cells[0].textContent);
+            return dateB - dateA;
+        });
+
+        tbody.innerHTML = '';
+        rows.forEach(function(row) {
+            tbody.appendChild(row);
+        });
+    }
+
+    // Function to sort table rows by Amount
+    function sortByAmount() {
+        var table = document.querySelector('.account-table');
+        var tbody = table.querySelector('tbody');
+        var rows = Array.from(tbody.querySelectorAll('tr'));
+
+        rows.sort(function (a, b) {
+            var amountA = parseFloat(a.cells[3].textContent.replace('$', '')); // Remove '$' and parse
+            var amountB = parseFloat(b.cells[3].textContent.replace('$', '')); // Remove '$' and parse
+            return amountB - amountA;
+        });
+
+        tbody.innerHTML = '';
+        rows.forEach(function (row) {
+            tbody.appendChild(row);
+        });
+    }
+
+
+    // Example: Sort by Date when a button with id "sort-by-date" is clicked
+    document.getElementById('sort-by-date').addEventListener('click', function() {
+        sortByDate();
+    });
+
+    // Example: Sort by Amount when a button with id "sort-by-amount" is clicked
+    document.getElementById('sort-by-amount').addEventListener('click', function() {
+        sortByAmount();
+    });
+</script>
