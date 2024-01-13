@@ -49,9 +49,9 @@
                     <select asp-for="@Model.Spending.SpendingCategoryId" class="form-control" id="SpendingCategoryId">
                         <option value="">Select a category</option>
                         @foreach (var category in Model.SpendingCategories)
-                        {
+                    {
                             <option value="@category.Id">@category.Name</option>
-                        }
+                    }
                          <option value="CreateNewCategory">Create New Category</option>
                     </select>
                     <span asp-validation-for="@Model.Spending.SpendingCategoryId" class="text-danger"></span>

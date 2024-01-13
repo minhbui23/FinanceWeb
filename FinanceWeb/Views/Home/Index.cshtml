@@ -66,8 +66,8 @@
 
     <!-- Create Spending line chart -->
     <script>
-        var ctx = document.getElementById('SpendingLineChart').getContext('2d');
-        var myChart = new Chart(ctx, {
+        var spendingLineChart = new Chart(document.getElementById('SpendingLineChart').getContext('2d'),
+        {
             type: 'line',
             data: {
                 labels: @Html.Raw(ViewBag.SpendLabels),
@@ -92,8 +92,8 @@
     </script> 
 
     <script>
-        var ctx = document.getElementById('IncomeLineChart').getContext('2d');
-        var myChart = new Chart(ctx, {
+        var incomeLineChart = new Chart(document.getElementById('IncomeLineChart').getContext('2d'), 
+        {
             type: 'line',
             data: {
                 labels: @Html.Raw(ViewBag.IncomeLabels),
@@ -118,8 +118,8 @@
     </script> 
     <!-- Create Spending pie chart -->     
     <script>
-        var ctx = document.getElementById('SpendingPieChart').getContext('2d');
-        var myPieChart = new Chart(ctx, {
+       var spendingPieChart = new Chart(document.getElementById('SpendingPieChart').getContext('2d'),
+       {
             type: 'pie',
             data: {
                 labels: @Html.Raw(ViewBag.SpendCategories),
@@ -170,8 +170,8 @@
 
     <!-- Create Income pie chart -->  
     <script>
-        var ctx = document.getElementById('IncomePieChart').getContext('2d');
-        var myPieChart = new Chart(ctx, {
+        var incomePieChart = new Chart(document.getElementById('IncomePieChart').getContext('2d'), 
+        {
             type: 'pie',
             data: {
                 labels: @Html.Raw(ViewBag.IncomeCategories),
@@ -208,6 +208,43 @@
                     responsive: true,
                 }
         }); 
-    </script>   
+    
+            function updateCharts() {
+                $.ajax({
+                    url: '/Home/GetUpdatedChartData',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data) {
+                            // Update Spending Line Chart
+                            spendingLineChart.data.labels = data.SpendLabels;
+                            spendingLineChart.data.datasets[0].data = data.SpendData;
+                            spendingLineChart.update();
 
+                            // Update Income Line Chart
+                            incomeLineChart.data.labels = data.IncomeLabels;
+                            incomeLineChart.data.datasets[0].data = data.IncomeData;
+                            incomeLineChart.update();
+
+                            // Update Spending Pie Chart
+                            spendingPieChart.data.labels = data.SpendCategories;
+                            spendingPieChart.data.datasets[0].data = data.SpendData;
+                            spendingPieChart.update();
+
+                            // Update Income Pie Chart
+                            incomePieChart.data.labels = data.IncomeCategories;
+                            incomePieChart.data.datasets[0].data = data.IncomeData;
+                            incomePieChart.update();
+                        }
+                    },
+                    error: function (error) {
+                        console.error('Error updating charts:', error);
+                    }
+                });
+            }
+
+            // Gọi hàm cập nhật sau khi thêm mới dữ liệu
+            updateCharts();
+        </script>
+        </div>
 </div>

@@ -1,4 +1,4 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Finance.Models;
 using Finance.DataAccess.DBContext;
@@ -98,10 +98,10 @@ public class HomeController : Controller
             ViewBag.IncomeCategories = Newtonsoft.Json.JsonConvert.SerializeObject(income_categories);
             ViewBag.IncomeData = Newtonsoft.Json.JsonConvert.SerializeObject(incomes_data);
         }
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
         
-        var user =  _userManager.GetUserAsync(User).Result;
+        var user = await _userManager.GetUserAsync(User);
         if(user != null){
             // Get the active wallet for the user
             _userWithActiveWallet = _userManager.Users
@@ -123,7 +123,44 @@ public class HomeController : Controller
         }
         return View();
     }
+    [HttpGet]
+    public async Task<IActionResult> GetUpdatedChartData()
+    {
+        var user = await _userManager.GetUserAsync(User);
+        if (user != null)
+        {
+            _userWithActiveWallet = _userManager.Users
+                .Include(u => u.Wallets)
+                .ThenInclude(w => w.Spendings)
+                .SingleOrDefault(u => u.Id == user.Id && u.ActiveWalletId != null);
 
+            if (_userWithActiveWallet != null && _userWithActiveWallet.ActiveWalletId != null)
+            {
+                // Lấy dữ liệu mới
+                GetLineChartSpendingData();
+                GetLineChartIncomeData();
+                GetPieChartSpendingData();
+                GetPieChartIncomeData();
+
+                // Trả về dữ liệu mới dưới dạng JSON
+                return Json(new
+                {
+                    SpendLabels = ViewBag.SpendLabels,
+                    SpendData = ViewBag.SpendData,
+                    IncomeLabels = ViewBag.IncomeLabels,
+                    IncomeData = ViewBag.IncomeData,
+                    SpendCategories = ViewBag.SpendCategories,
+                    SpendCategoriesData = ViewBag.SpendData
+                });
+            }
+            else
+            {
+                return Json(new { error = "Active wallet not found" });
+            }
+        }
+
+        return Json(null);
+    }
 
     public IActionResult Privacy()
     {
