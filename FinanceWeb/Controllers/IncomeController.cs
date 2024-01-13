@@ -144,6 +144,7 @@ namespace Finance_Web.Controllers
             }
             var viewModel = new IncomeEditViewModel
             {
+                IncomeCategories = _db.IncomeCategories.ToList(),
                 IncomeFromDb = incomeFromDb,
                 PreAmount = preAmount
             };
@@ -205,7 +206,12 @@ namespace Finance_Web.Controllers
             if(incomeFromDb == null) {
                 return NotFound();
             }
-            return View(incomeFromDb);
+            var viewModel = new IncomeCreateViewModel
+            {
+                IncomeCategories = _db.IncomeCategories.ToList(),
+                Income = new Income()
+            };
+            return View(viewModel);
         }
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeletePost(int? id){
@@ -229,7 +235,7 @@ namespace Finance_Web.Controllers
             {
                 if (userWithActiveWallet.ActiveWallet != null)
                 {
-                    userWithActiveWallet.ActiveWallet.Balance += obj.Amount;
+                    userWithActiveWallet.ActiveWallet.Balance -= obj.Amount;
                 }
                 
                 _db.Incomes.Remove(obj);

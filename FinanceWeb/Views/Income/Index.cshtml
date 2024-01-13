@@ -18,11 +18,19 @@
                             <i class="bi bi-bag-plus-fill"></i> Add New
                     </a>
                 </div>
+                <div class="custom-block p-2 d-flex justify-content-between align-items-center">
+                    <h6 class="mb-0">Sort</h6>
+                    <div class="btn-group">
+                        <button id="sort-by-amount-up" class="btn btn-sm btn-outline-secondary">Amount <i class="bi bi-arrow-up"></i></button>
+                        <button id="sort-by-amount-down" class="btn btn-sm btn-outline-secondary">Amount <i class="bi bi-arrow-down"></i></button>
+                    </div>
+                </div>
 
                 <div class="table-responsive">
                     <table class="account-table table">
                         <thead>
                             <tr>
+                                <th scope="col">STT</th>
 								<th scope="col">Date</th>
 
 								<th scope="col">Time</th>
@@ -33,7 +41,6 @@
 
 								<th scope="col" class="text-center">More</th>
 
-
                             </tr>
                         </thead>
 						<tbody>
@@ -42,9 +49,11 @@
                                 var user = await UserManager.GetUserAsync(User);
                                 if (user != null)
                                 {
+                                    var stt=1;
                                     @foreach (var income in Model)
                                     {
                                         <tr>
+                                            <td>@stt</td>
                                             <td>@income.Time.ToString("dd/MM/yyyy")</td>
                                             <td>@income.Time.ToString(@"hh\:mm tt")</td>
                                             <td>@income.Income_Category?.Name</td>
@@ -61,15 +70,13 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                        stt++;
                                     }
                                 }
                             }
 						</tbody>
                     </table>
-                <div class="text-center mt-3">
-                    <button id="sort-by-date" class="btn btn-primary mr-2">Sort by Date</button>
-                    <button id="sort-by-amount" class="btn btn-primary">Sort by Amount</button>
-                </div>
+
                 </div>
 
                 <nav aria-label="Page navigation example">
@@ -104,39 +111,39 @@
                         </li>
                     </ul>                
                 </nav>
+
 			</div>
         </div>																			
 </div>
 
 <!-- Add this script at the end of your HTML body or in a separate JavaScript file -->
 <script>
-    // Function to sort table rows by Date
-    function sortByDate() {
-        var table = document.querySelector('.account-table');
-        var tbody = table.querySelector('tbody');
-        var rows = Array.from(tbody.querySelectorAll('tr'));
-
-        rows.sort(function(a, b) {
-            var dateA = new Date(a.cells[0].textContent);
-            var dateB = new Date(b.cells[0].textContent);
-            return dateB - dateA;
-        });
-
-        tbody.innerHTML = '';
-        rows.forEach(function(row) {
-            tbody.appendChild(row);
-        });
-    }
 
     // Function to sort table rows by Amount
-    function sortByAmount() {
+    function sortByAmountUp() {
         var table = document.querySelector('.account-table');
         var tbody = table.querySelector('tbody');
         var rows = Array.from(tbody.querySelectorAll('tr'));
 
         rows.sort(function (a, b) {
-            var amountA = parseFloat(a.cells[3].textContent.replace('$', '')); // Remove '$' and parse
-            var amountB = parseFloat(b.cells[3].textContent.replace('$', '')); // Remove '$' and parse
+            var amountA = parseFloat(a.cells[4].textContent.replace('$', '')); // Remove '$' and parse
+            var amountB = parseFloat(b.cells[4].textContent.replace('$', '')); // Remove '$' and parse
+            return amountA - amountB;
+        });
+
+        tbody.innerHTML = '';
+        rows.forEach(function (row) {
+            tbody.appendChild(row);
+        });
+    }
+    function sortByAmountDown() {
+        var table = document.querySelector('.account-table');
+        var tbody = table.querySelector('tbody');
+        var rows = Array.from(tbody.querySelectorAll('tr'));
+
+        rows.sort(function (a, b) {
+            var amountA = parseFloat(a.cells[4].textContent.replace('$', '')); // Remove '$' and parse
+            var amountB = parseFloat(b.cells[4].textContent.replace('$', '')); // Remove '$' and parse
             return amountB - amountA;
         });
 
@@ -147,13 +154,11 @@
     }
 
 
-    // Example: Sort by Date when a button with id "sort-by-date" is clicked
-    document.getElementById('sort-by-date').addEventListener('click', function() {
-        sortByDate();
-    });
-
     // Example: Sort by Amount when a button with id "sort-by-amount" is clicked
-    document.getElementById('sort-by-amount').addEventListener('click', function() {
-        sortByAmount();
+    document.getElementById('sort-by-amount-up').addEventListener('click', function() {
+        sortByAmountUp();
+    });
+    document.getElementById('sort-by-amount-down').addEventListener('click', function() {
+        sortByAmountDown();
     });
 </script>

@@ -1,6 +1,9 @@
-﻿@{
+﻿@model Finance.Models.ViewModel.HomeIndexViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
+
 <div class="roboto-regular">
     <div class="container mt-5">
         <div class="text-center">
@@ -57,194 +60,179 @@
             </div>
         </div>
 
+        <!-- Include the Chart.js library -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-
-
-            
-    <!-- Include the Chart.js library -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <!-- Create Spending line chart -->
-    <script>
-        var spendingLineChart = new Chart(document.getElementById('SpendingLineChart').getContext('2d'),
-        {
-            type: 'line',
-            data: {
-                labels: @Html.Raw(ViewBag.SpendLabels),
-                datasets: [
-                    {
-                        label: 'Spend by Day',
-                        data: @Html.Raw(ViewBag.SpendData),
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 2
-                    }
-                ]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    </script> 
-
-    <script>
-        var incomeLineChart = new Chart(document.getElementById('IncomeLineChart').getContext('2d'), 
-        {
-            type: 'line',
-            data: {
-                labels: @Html.Raw(ViewBag.IncomeLabels),
-                datasets: [
-                    {
-                        label: 'Income by Day',
-                        data: @Html.Raw(ViewBag.IncomeData),
-                        backgroundColor: 'rgba(255, 0, 0, 0.2)',
-                        borderColor: 'rgba(255, 0, 0, 1)',
-                        borderWidth: 2
-                    }
-                ]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    </script> 
-    <!-- Create Spending pie chart -->     
-    <script>
-       var spendingPieChart = new Chart(document.getElementById('SpendingPieChart').getContext('2d'),
-       {
-            type: 'pie',
-            data: {
-                labels: @Html.Raw(ViewBag.SpendCategories),
-                datasets: [{
-                    label: 'Spend by Category',
-                    data: @Html.Raw(ViewBag.SpendData),
-                    backgroundColor: [
-                        'rgba(255, 0, 0, 0.3)',   // Red
-                        'rgba(0, 255, 0, 0.3)',   // Green
-                        'rgba(0, 0, 255, 0.3)',   // Blue
-                        'rgba(255, 255, 0, 0.3)', // Yellow
-                        'rgba(0, 255, 255, 0.3)', // Cyan
-                        'rgba(212, 172, 13, 0.3)', // Gold
-                        'rgba(93, 173, 226 , 0.3)', // Light Blue
-                        'rgba(229, 152, 102, 0.3)', // Orange
-                        'rgba(115, 198, 182, 0.3)', // Teal
-                        'rgba(187, 143, 206 , 0.3)', // Purple
-                        'rgba(88, 214, 141 , 0.3)', // Green
-                        'rgba(186, 74, 0, 0.3)', // Brown
-                        'rgba(255, 0, 255, 0.3)'  // Magenta
-
-                    ],
-                    borderColor: [
-                        'rgba(255, 0, 0, 1)',   // Red
-                        'rgba(0, 255, 0, 1)',   // Green
-                        'rgba(0, 0, 255, 1)',   // Blue
-                        'rgba(255, 255, 0, 1)', // Yellow
-                        'rgba(0, 255, 255, 1)', // Cyan
-                        'rgba(212, 172, 13, 1)', // Gold
-                        'rgba(93, 173, 226 , 1)', // Light Blue
-                        'rgba(229, 152, 102, 1)', // Orange
-                        'rgba(115, 198, 182, 1)', // Teal
-                        'rgba(187, 143, 206 , 1)', // Purple
-                        'rgba(88, 214, 141 , 1)', // Green
-                        'rgba(186, 74, 0, 1)', // Brown
-                        'rgba(255, 0, 255, 1)'  // Magenta
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                    responsive: true,
-                }
-        }); 
-    </script>   
-
-
-
-    <!-- Create Income pie chart -->  
-    <script>
-        var incomePieChart = new Chart(document.getElementById('IncomePieChart').getContext('2d'), 
-        {
-            type: 'pie',
-            data: {
-                labels: @Html.Raw(ViewBag.IncomeCategories),
-                datasets: [{
-                    label: 'Spend by Category',
-                    data: @Html.Raw(ViewBag.IncomeData),
-                    backgroundColor: [
-                        'rgba(255, 0, 0, 0.3)',   // Red
-                        'rgba(0, 255, 0, 0.3)',   // Green
-                        'rgba(0, 0, 255, 0.3)',   // Blue
-                        'rgba(255, 255, 0, 0.3)', // Yellow
-                        'rgba(0, 255, 255, 0.3)', // Cyan
-                        'rgba(212, 172, 13, 0.3)', // Gold
-                        'rgba(93, 173, 226 , 0.3)', // Light Blue
-                        'rgba(229, 152, 102, 0.3)', // Orange
-                        'rgba(255, 0, 255, 0.3)'  // Magenta
-
-                    ],
-                    borderColor: [
-                        'rgba(255, 0, 0, 1)',   // Red
-                        'rgba(0, 255, 0, 1)',   // Green
-                        'rgba(0, 0, 255, 1)',   // Blue
-                        'rgba(255, 255, 0, 1)', // Yellow
-                        'rgba(0, 255, 255, 1)', // Cyan
-                        'rgba(212, 172, 13,  1)', // Gold
-                        'rgba(93, 173, 226 , 1)', // Light Blue
-                        'rgba(229, 152, 102, 1)', // Orange
-                        'rgba(255, 0, 255, 1)'  // Magenta
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                    responsive: true,
-                }
-        }); 
-    
-            function updateCharts() {
-                $.ajax({
-                    url: '/Home/GetUpdatedChartData',
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function (data) {
-                        if (data) {
-                            // Update Spending Line Chart
-                            spendingLineChart.data.labels = data.SpendLabels;
-                            spendingLineChart.data.datasets[0].data = data.SpendData;
-                            spendingLineChart.update();
-
-                            // Update Income Line Chart
-                            incomeLineChart.data.labels = data.IncomeLabels;
-                            incomeLineChart.data.datasets[0].data = data.IncomeData;
-                            incomeLineChart.update();
-
-                            // Update Spending Pie Chart
-                            spendingPieChart.data.labels = data.SpendCategories;
-                            spendingPieChart.data.datasets[0].data = data.SpendData;
-                            spendingPieChart.update();
-
-                            // Update Income Pie Chart
-                            incomePieChart.data.labels = data.IncomeCategories;
-                            incomePieChart.data.datasets[0].data = data.IncomeData;
-                            incomePieChart.update();
+        <!-- Create Spending line chart -->
+        <script>
+            var spendingLineChart = new Chart(document.getElementById('SpendingLineChart').getContext('2d'),
+            {
+                type: 'line',
+                data: {
+                    labels: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.SpendingLineChartViewModel.Labels)),
+                    datasets: [
+                        {
+                            label: 'Spend by Day',
+                            data: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.SpendingLineChartViewModel.Data)),
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 2
                         }
-                    },
-                    error: function (error) {
-                        console.error('Error updating charts:', error);
+                    ]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
                     }
-                });
-            }
-
-            // Gọi hàm cập nhật sau khi thêm mới dữ liệu
-            updateCharts();
+                }
+            });
         </script>
-        </div>
+
+        <!-- Create Income line chart -->
+        <script>
+            var incomeLineChart = new Chart(document.getElementById('IncomeLineChart').getContext('2d'),
+            {
+                type: 'line',
+                data: {
+                    labels: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.IncomeLineChartViewModel.Labels)),
+                    datasets: [
+                        {
+                            label: 'Income by Day',
+                            data: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.IncomeLineChartViewModel.Data)),
+                            backgroundColor: 'rgba(255, 0, 0, 0.2)',
+                            borderColor: 'rgba(255, 0, 0, 1)',
+                            borderWidth: 2
+                        }
+                    ]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
+        <script>
+            var spendingLineChart = new Chart(document.getElementById('SpendingLineChart').getContext('2d'),
+            {
+                type: 'line',
+                data: {
+                    labels: @Html.Raw(@Model.SpendingLineChartViewModel.Labels),
+                    datasets: [
+                        {
+                            label: 'Spend by Day',
+                            data: @Html.Raw(@Model.SpendingLineChartViewModel.Data),
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 2
+                        }
+                    ]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script> 
+
+        
+        <!-- Create Spending pie chart -->     
+        <script>
+        var spendingPieChart = new Chart(document.getElementById('SpendingPieChart').getContext('2d'),
+        {
+                type: 'pie',
+                data: {
+                    labels: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(@Model.SpendingPieChartViewModel.Labels)),
+                    datasets: [{
+                        label: 'Spend by Category',
+                        data: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(@Model.SpendingPieChartViewModel.Data)),
+                        backgroundColor: [
+                            'rgba(255, 0, 0, 0.3)',   // Red
+                            'rgba(0, 255, 0, 0.3)',   // Green
+                            'rgba(0, 0, 255, 0.3)',   // Blue
+                            'rgba(255, 255, 0, 0.3)', // Yellow
+                            'rgba(0, 255, 255, 0.3)', // Cyan
+                            'rgba(212, 172, 13, 0.3)', // Gold
+                            'rgba(93, 173, 226 , 0.3)', // Light Blue
+                            'rgba(229, 152, 102, 0.3)', // Orange
+                            'rgba(115, 198, 182, 0.3)', // Teal
+                            'rgba(187, 143, 206 , 0.3)', // Purple
+                            'rgba(88, 214, 141 , 0.3)', // Green
+                            'rgba(186, 74, 0, 0.3)', // Brown
+                            'rgba(255, 0, 255, 0.3)'  // Magenta
+
+                        ],
+                        borderColor: [
+                            'rgba(255, 0, 0, 1)',   // Red
+                            'rgba(0, 255, 0, 1)',   // Green
+                            'rgba(0, 0, 255, 1)',   // Blue
+                            'rgba(255, 255, 0, 1)', // Yellow
+                            'rgba(0, 255, 255, 1)', // Cyan
+                            'rgba(212, 172, 13, 1)', // Gold
+                            'rgba(93, 173, 226 , 1)', // Light Blue
+                            'rgba(229, 152, 102, 1)', // Orange
+                            'rgba(115, 198, 182, 1)', // Teal
+                            'rgba(187, 143, 206 , 1)', // Purple
+                            'rgba(88, 214, 141 , 1)', // Green
+                            'rgba(186, 74, 0, 1)', // Brown
+                            'rgba(255, 0, 255, 1)'  // Magenta
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                        responsive: true,
+                    }
+            }); 
+        </script>   
+
+        <!-- Create Income pie chart -->  
+        <script>
+            var incomePieChart = new Chart(document.getElementById('IncomePieChart').getContext('2d'), 
+            {
+                type: 'pie',
+                data: {
+                    labels: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(@Model.IncomePieChartViewModel.Labels)),
+                    datasets: [{
+                        label: 'Spend by Category',
+                        data: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(@Model.IncomePieChartViewModel.Data)),
+                        backgroundColor: [
+                            'rgba(255, 0, 0, 0.3)',   // Red
+                            'rgba(0, 255, 0, 0.3)',   // Green
+                            'rgba(0, 0, 255, 0.3)',   // Blue
+                            'rgba(255, 255, 0, 0.3)', // Yellow
+                            'rgba(0, 255, 255, 0.3)', // Cyan
+                            'rgba(212, 172, 13, 0.3)', // Gold
+                            'rgba(93, 173, 226 , 0.3)', // Light Blue
+                            'rgba(229, 152, 102, 0.3)', // Orange
+                            'rgba(255, 0, 255, 0.3)'  // Magenta
+
+                        ],
+                        borderColor: [
+                            'rgba(255, 0, 0, 1)',   // Red
+                            'rgba(0, 255, 0, 1)',   // Green
+                            'rgba(0, 0, 255, 1)',   // Blue
+                            'rgba(255, 255, 0, 1)', // Yellow
+                            'rgba(0, 255, 255, 1)', // Cyan
+                            'rgba(212, 172, 13,  1)', // Gold
+                            'rgba(93, 173, 226 , 1)', // Light Blue
+                            'rgba(229, 152, 102, 1)', // Orange
+                            'rgba(255, 0, 255, 1)'  // Magenta
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                        responsive: true,
+                    }
+            }); 
+        </script>
+    </div>
 </div>
