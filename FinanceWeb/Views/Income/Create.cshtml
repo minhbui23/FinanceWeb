@@ -46,7 +46,7 @@
         <div class="mb-3 row">
             <label for="Description" class="col-sm-2 col-form-label fs-5">Description</label>
                 <div class="col-sm-10">
-                    <select asp-for="@Model.Income.IncomeCategoryId" class="form-control" id="SpendingCategoryId">
+                    <select asp-for="@Model.Income.IncomeCategoryId" class="form-control" id="SpendingCategoryId" required>
                         <option value="">Select a category</option>
                         @foreach (var category in Model.IncomeCategories)
                         {
